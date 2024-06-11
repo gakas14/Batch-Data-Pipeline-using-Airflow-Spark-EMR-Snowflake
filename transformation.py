@@ -14,8 +14,8 @@ spark = SparkSession \
 
 
 def main():
-    df_wifi_locations1="s3://gakas-mta-etl-job/input_folder/wifi_locations.csv";
-    df_wifi_locations2="s3://gakas-mta-etl-job/input_folder/hourly_ridership_full.csv"
+    df_wifi_locations1="s3://gakas-mta-etl-job/input_files/wifi_locations.csv";
+    df_wifi_locations2="s3://gakas-mta-etl-job/input_files/hourly_ridership_full.csv"
 
     
     # df_hourly_ridership_c = spark.read.csv('hourly_ridership_full.csv', header=True, escape="\"")
@@ -61,8 +61,8 @@ def main():
 
 
     
-    #ms.coalesce(1).write.format("parquet").mode('overwrite').save("s3://gakas-mta-etl-job/output_folder/")
-    group_table.coalesce(1).write.format("parquet").mode('overwrite').save("s3://gakas-mta-etl-job/output_folder/")
+    
+    group_table.coalesce(1).write.format("parquet").mode('overwrite').save("s3://gakas-mta-etl-job/input_files/")
    
 
 main()
